@@ -1,8 +1,20 @@
 [
+    //HTML
+    {trigger:"center",replacement:"<center>$0</center>$1",
+    options:"tA"},
+    
     // Math mode
 	{trigger: "mk", replacement: "$$0$", options: "tA"},
 	{trigger: "dm", replacement: "$$\n$0\n$$", options: "tAw"},
 	{trigger: "beg", replacement: "\\begin{$0}\n$1\n\\end{$0}", options: "mA"},
+
+
+    //Probability Theory and Mathematical Statistics
+    {trigger:"normal",replacement:"\\sim N(${0:0},${1:1})$2",options:"mA"},
+    { trigger: "binom", replacement: "\\sim B(${0:n},${1:p})$2", options: "mA" },
+    { trigger: "poisson", replacement: "\\sim \\pi(${0:\\lambda})$1", options: "mA" },
+    { trigger: "uniform", replacement: "\\sim U(${0:a},${1:b})$2", options: "mA" },
+   // { trigger: "expon", replacement: "\\sim E(${0:\\lambda})$1", options: "mA" },
 
     // Dashes
 	// {trigger: "--", replacement: "–", options: "tA"},
@@ -53,10 +65,12 @@
 
     {trigger: /([^\\])(exp|log|ln)/, replacement: "[[0]]\\[[1]]", options: "rmA"},
     {trigger: "conj", replacement: "^{*}", options: "mA"},
+    {trigger:"te",replacement:"\\text{$0}$1",
+     options:"mA"},{trigger:"bb",replacement:"\\mathbb{$0}",options:"mA"},
     {trigger: "Re", replacement: "\\mathrm{Re}", options: "mA"},
 	{trigger: "Im", replacement: "\\mathrm{Im}", options: "mA"},
     {trigger: "bf", replacement: "\\mathbf{$0}", options: "mA"},
-	{trigger: "rm", replacement: "\\mathrm{$0}$1", options: "mA"},
+	//{trigger: "rm", replacement: "\\mathrm{$0}$1", options: "mA"},
 
     // Linear algebra
     {trigger: /([^\\])(det)/, replacement: "[[0]]\\[[1]]", options: "rmA"},
@@ -83,7 +97,7 @@
 	{trigger: "tilde", replacement: "\\tilde{$0}$1", options: "mA"},
 	{trigger: "und", replacement: "\\underline{$0}$1", options: "mA"},
 	{trigger: "vec", replacement: "\\vec{$0}$1", options: "mA"},
-
+{trigger: "tag", replacement: "\\tag{$0}$1", options: "mA"},
     // More auto letter subscript
     {trigger: /([A-Za-z])_(\d\d)/, replacement: "[[0]]_{[[1]]}", options: "rmA"},
 	{trigger: /\\hat{([A-Za-z])}(\d)/, replacement: "\\hat{[[0]]}_{[[1]]}", options: "rmA"},
@@ -250,8 +264,8 @@
 
     // Brackets
 	{trigger: "avg", replacement: "\\langle $0 \\rangle $1", options: "mA"},
-	{trigger: "norm", replacement: "\\lvert $0 \\rvert $1", options: "mA", priority: 1},
-	{trigger: "Norm", replacement: "\\lVert $0 \\rVert $1", options: "mA", priority: 1},
+	{trigger: "norm", replacement: "\\lvert $0 \\rvert $1", options: "m", priority: 1},
+	{trigger: "Norm", replacement: "\\lVert $0 \\rVert $1", options: "m", priority: 1},
 	{trigger: "ceil", replacement: "\\lceil $0 \\rceil $1", options: "mA"},
 	{trigger: "floor", replacement: "\\lfloor $0 \\rfloor $1", options: "mA"},
 	{trigger: "mod", replacement: "|$0|$1", options: "mA"},
@@ -283,12 +297,11 @@
 
 
     // Snippet replacements can have placeholders.
-	{trigger: "tayl", replacement: "${0:f}(${1:x} + ${2:h}) = ${0:f}(${1:x}) + ${0:f}'(${1:x})${2:h} + ${0:f}''(${1:x}) \\frac{${2:h}^{2}}{2!} + \\dots$3", options: "mA", description: "Taylor expansion"},
+	{trigger: "tayl", replacement: "${0:f}(${1:x} + ${2:h}) = ${0:f}(${1:x}) + ${0:f}'(${1:x})${2:h} + ${0:f}''(${1:x}) \\frac{${2:h}^{2}}{2!} + \\dots$3", options: "m", description: "Taylor expansion"},
 
-	//Advanced replacements of taylor expansion
-	
-	
-	
+    //Advanced Taylor expansion
+  
+    
     // Snippet replacements can also be JavaScript functions.
     // See the documentation for more information.
 	{trigger: /iden(\d)/, replacement: (match) => {
