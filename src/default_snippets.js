@@ -300,7 +300,39 @@
 	{trigger: "tayl", replacement: "${0:f}(${1:x} + ${2:h}) = ${0:f}(${1:x}) + ${0:f}'(${1:x})${2:h} + ${0:f}''(${1:x}) \\frac{${2:h}^{2}}{2!} + \\dots$3", options: "m", description: "Taylor expansion"},
 
     //Advanced Taylor expansion
-  
+    //general power series
+    {
+    "trigger": "pow", 
+    "replacement": "${0:f}(${1:x}) = \\sum_{n=0}^{\\infty} a_n${1:x}^n", 
+    "options": "m", 
+    "description": "General power series expansion"
+},
+    {
+    "trigger": "powe", 
+    "replacement": "${0:f}(${1:x}) = a_0 + a_1${1:x} + a_2${1:x}^2 + a_3${1:x}^3 + \\dots", 
+    "options": "m", 
+    "description": "Expanded form of general power series"
+},
+    {
+    "trigger": "powex", 
+    "replacement": "${0:f}(${1:x}) = a_0 + a_1(${1:x}-x_0) + a_2(${1:x}-x_0)^2 + a_3(${1:x}-x_0)^3 + \\dots", 
+    "options": "m", 
+    "description": "Expanded form of general power series"
+},
+
+    //Exponential Taylor expansion
+    {
+    "trigger": "tayle", 
+    "replacement": "e^${1:x} = \\sum_{n=0}^{\\infty} \\frac{${1:x}^n}{n!}", 
+    "options": "m", 
+    "description": "Taylor expansion of exponential function"
+},
+    {
+    "trigger": "taylex", 
+    "replacement": "e^${1:x} = 1 + \\frac{${1:x}}{1!} + \\frac{${1:x}^2}{2!} + \\frac{${1:x}^3}{3!} + \\frac{${1:x}^4}{4!} + \\dots + \\frac{${1:x}^n}{n!}", 
+    "options": "m", 
+    "description": "Taylor expansion of exponential function"
+},
     
     // Snippet replacements can also be JavaScript functions.
     // See the documentation for more information.
