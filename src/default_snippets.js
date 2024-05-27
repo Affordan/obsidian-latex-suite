@@ -285,6 +285,10 @@
     // Snippet replacements can have placeholders.
 	{trigger: "tayl", replacement: "${0:f}(${1:x} + ${2:h}) = ${0:f}(${1:x}) + ${0:f}'(${1:x})${2:h} + ${0:f}''(${1:x}) \\frac{${2:h}^{2}}{2!} + \\dots$3", options: "mA", description: "Taylor expansion"},
 
+	//Advanced replacements of taylor expansion
+	
+	
+	
     // Snippet replacements can also be JavaScript functions.
     // See the documentation for more information.
 	{trigger: /iden(\d)/, replacement: (match) => {
