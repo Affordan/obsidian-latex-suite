@@ -44,6 +44,8 @@
 	{trigger: "@U", replacement: "\\Upsilon", options: "mA"},
 	{trigger: "@o", replacement: "\\omega", options: "mA"},
 	{trigger: "@O", replacement: "\\Omega", options: "mA"},
+    {trigger: "@n", replacement: "\\bigtriangledown ", options: "mA"
+    ,discription:"nabla"},
 	{trigger: "ome", replacement: "\\omega", options: "mA"},
 	{trigger: "Ome", replacement: "\\Omega", options: "mA"},
 
@@ -188,7 +190,7 @@
     // Derivatives and integrals
     {trigger: "par", replacement: "\\frac{ \\partial ${0:y} }{ \\partial ${1:x} } $2", options: "m"},
     {trigger: /pa([A-Za-z])([A-Za-z])/, replacement: "\\frac{ \\partial [[0]] }{ \\partial [[1]] } ", options: "rm"},
-    {trigger: "ddt", replacement: "\\frac{d}{dt} ", options: "mA"},
+    {trigger: "ddt", replacement: "\\frac{d}{d${0:t} ", options: "mA"},
 
     {trigger: /([^\\])int/, replacement: "[[0]]\\int", options: "mA", priority: -1},
     {trigger: "\\int", replacement: "\\int $0 \\, d${1:x} $2", options: "m"},
@@ -199,6 +201,17 @@
     {trigger: "oinf", replacement: "\\int_{0}^{\\infty} $0 \\, d${1:x} $2", options: "mA"},
 	{trigger: "infi", replacement: "\\int_{-\\infty}^{\\infty} $0 \\, d${1:x} $2", options: "mA"},
 
+    //positions
+    {
+    "trigger": "usi",
+    "replacement": "\\underset{${0:D}}{${1:\\iint}} f(${2:x},${3:y})\\, d${4:x} \\,d${5:y}$6",
+    "options": "m"
+},
+     {
+    "trigger": "usii",
+    "replacement": "\\underset{${0:\\Omega}}{${1:\\iiint}} f(${2:x},${3:y},${4:z})\\, d${5:x}\\, d${6:y} \\,d${7:z}$8",
+    "options": "m"
+},
 
     // Trigonometry
     {trigger: /([^\\])(arcsin|sin|arccos|cos|arctan|tan|csc|sec|cot)/, replacement: "[[0]]\\[[1]]", options: "rmA", description: "Add backslash before trig funcs"},
@@ -276,6 +289,7 @@
 	{trigger: "{", replacement: "{$0}$1", options: "mA"},
 	{trigger: "[", replacement: "[$0]$1", options: "mA"},
 	{trigger: "lr(", replacement: "\\left( $0 \\right) $1", options: "mA"},
+    {trigger: "lr<", replacement: "\\left< $0 \\right> $1", options: "mA"},
 	{trigger: "lr{", replacement: "\\left\\{ $0 \\right\\} $1", options: "mA"},
 	{trigger: "lr[", replacement: "\\left[ $0 \\right] $1", options: "mA"},
 	{trigger: "lr|", replacement: "\\left| $0 \\right| $1", options: "mA"},
@@ -303,7 +317,7 @@
     //general power series
     {
     "trigger": "pow", 
-    "replacement": "${0:f}(${1:x}) = \\sum_{n=0}^{\\infty} a_n${1:x}^n", 
+    "replacement": "${0:f}(${1:x}) = \\sum_{n=0}^{\\infty} a_n${2:x}^n$3", 
     "options": "m", 
     "description": "General power series expansion"
 },
